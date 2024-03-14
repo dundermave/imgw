@@ -22,14 +22,14 @@ class IMGWSettingsForm extends ConfigFormBase {
    *
    * @var string
    */
-  protected const DEFAULT_API_URL_METEOROGICAL = "https://danepubliczne.imgw.pl/api/data/synop/";
+  const DEFAULT_API_URL_METEOROGICAL = "https://danepubliczne.imgw.pl/api/data/synop/";
 
   /**
    * Default value for hydrological API on IMGW web
    *
    * @var string
    */
-  protected const DEFAULT_API_URL_HYDROLOGICAL = "https://danepubliczne.imgw.pl/api/data/hydro/";
+  const DEFAULT_API_URL_HYDROLOGICAL = "https://danepubliczne.imgw.pl/api/data/hydro/";
 
   /**
    * Creates a new IMGWSettingsForm instance.

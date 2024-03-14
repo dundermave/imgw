@@ -12,6 +12,7 @@ use Drupal\Core\Config\ConfigFactoryInterface;
 use Drupal\Core\Pager\PagerManagerInterface;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\Core\StringTranslation\TranslationInterface;
+use Drupal\imgw\Form\IMGWSettingsForm;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class IMGWDataFormatter {
@@ -66,8 +67,11 @@ class IMGWDataFormatter {
    * Formats data from the API so that it can be displayed in a table.
    *
    * @param $dataFromApi
-   * @param $fields
+   *   Data that was received from API
+   * @param $fieldMapping
+   *   Mapped information that contains headers and fields information
    * @return array
+   *   Returns rows are in the fields list.
    */
   protected function getRowsFromData($dataFromApi, $fieldMapping): array
   {
@@ -102,9 +106,10 @@ class IMGWDataFormatter {
   /**
    * Format headers to match correct format.
    *
-   * @param $dataFromApi
-   * @param $fields
+   * @param $fieldMapping
+   *   Mapped information that contains headers and fields information
    * @return array
+   *   Returns the array of headers for table
    */
   protected function getHeadersFromData($fieldMapping): array
   {
@@ -120,11 +125,15 @@ class IMGWDataFormatter {
    * to display in view.
    *
    * @return array
-   * @throws \GuzzleHttp\Exception\GuzzleException
+   *   Data from Meteorogical API endpoint
    */
   public function getMeteorogicalDataTable(): array
   {
     $uri = $this->config->get('api_url_meteorogical');
+
+    if (is_null($uri)) {
+      $uri = IMGWSettingsForm::DEFAULT_API_URL_METEOROGICAL;
+    }
 
     $dataFromApi = $this->IMGWApiConnector->fetchDataFromAPI($uri);
 
@@ -171,7 +180,6 @@ class IMGWDataFormatter {
         ],
     ];
 
-
     return [
       'headers' => $this->getHeadersFromData($fieldMapping),
       'rows' => $this->getRowsFromData($dataFromApi, $fieldMapping)
@@ -187,6 +195,10 @@ class IMGWDataFormatter {
   public function getHydrologicalDataTable(): array
   {
     $uri = $this->config->get('api_url_hydrological');
+
+    if (is_null($uri)) {
+      $uri = IMGWSettingsForm::DEFAULT_API_URL_HYDROLOGICAL;
+    }
 
     $dataFromApi = $this->IMGWApiConnector->fetchDataFromAPI($uri);
 
@@ -238,8 +250,11 @@ class IMGWDataFormatter {
    * Accepts table rows and limit to create paginations
    *
    * @param array $rows
+   *   Table rows to display
    * @param integer $limit
+   *   Amount of elements displayed per page
    * @return array
+   *   Sliced content that matches pagination page
    */
   public function paginateData($rows, $limit): array
   {

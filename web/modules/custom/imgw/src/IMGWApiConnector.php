@@ -55,7 +55,7 @@ class IMGWApiConnector {
    *   End point to the API.
    *
    * @return array
-   *   The meteorological data.
+   *   Content from the API.
    *
    * @throws \Exception|\GuzzleHttp\Exception\GuzzleException
    *   If there's a problem and data cannot be fetched.

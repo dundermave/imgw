@@ -47,6 +47,7 @@ class IMGWController extends ControllerBase {
    * Returns view with meteorogical formatted data.
    *
    * @return array
+   *   Returns array that will display view.
    */
   public function listMeteorogical(): array
   {
