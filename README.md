@@ -26,7 +26,7 @@
 
 ---
 
-##Installation using commands
+### Installation using commands
    To run internal commands inside the container, type:
    ```
    docker exec -it imgw-mydrupal-1 bash
@@ -47,7 +47,7 @@
    drush en imgw -y && drush cr
    ```
 
-##Automatic Installation
+### Automatic Installation
 1. Navigate through the Drupal automatic installation, providing the following database details:
   - Database name: `imgw_db`
   - Database username: `user`
