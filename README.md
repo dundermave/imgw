@@ -26,17 +26,7 @@
 
 ---
 
-**Installation**
-
-1. **Automatic Installation**:
-   Navigate through the Drupal automatic installation, providing the following database details:
-  - Database name: `imgw_db`
-  - Database username: `user`
-  - Database password: `userpassword`
-
-   Set the host to `mymariadb`.
-
-2. **Manual Installation**:
+##Installation using commands
    To run internal commands inside the container, type:
    ```
    docker exec -it imgw-mydrupal-1 bash
@@ -52,9 +42,25 @@
    echo 'yes' | drush site-install standard --db-url=mysql://user:userpassword@mymariadb:3306/imgw_db --account-name=admin --account-pass=admin --site-name="My IMGW website"
    ```
 
-   Activate the IMGW plugin and clear the cache for the application:
+   Activate the IMGW module and rebuild the cache for the application:
    ```
    drush en imgw -y && drush cr
    ```
+
+##Automatic Installation
+1. Navigate through the Drupal automatic installation, providing the following database details:
+  - Database name: `imgw_db`
+  - Database username: `user`
+  - Database password: `userpassword`
+  - Set the host to `mymariadb`.
+
+
+2. **Complete Configuration**.
+
+
+3. **Enable IMGW Api Module**:
+   Navigate to extensions and activate the IMGW Api module.
+
+
 
 ---
