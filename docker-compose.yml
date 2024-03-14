@@ -1,0 +1,51 @@
+version: '3'
+services:
+  mymariadb:
+    image: mariadb:11.4.1-rc
+    environment:
+      - MYSQL_DATABASE=imgw_db
+      - MYSQL_USER=user
+      - MYSQL_PASSWORD=userpassword
+      - MYSQL_ROOT_PASSWORD=rootpassword
+    networks:
+      - drupalnetwork
+    volumes:
+      - ./imgw_db.sql:/docker-entrypoint-initdb.d/init.sql
+      - db-data:/var/lib/mysql
+
+  myphpmyadmin:
+    image: phpmyadmin/phpmyadmin:5.2.1
+    ports:
+      - 8081:80
+    networks:
+      - drupalnetwork
+    depends_on:
+      - "mymariadb"
+    environment:
+      - PMA_HOST=mymariadb
+
+  mydrupal:
+    build:
+      context: .
+    ports:
+      - 8080:80
+    networks:
+      - drupalnetwork
+    depends_on:
+      - "mymariadb"
+    environment:
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=rootpassword
+      - MYSQL_HOST=mymariadb
+    volumes:
+      - ./web/modules:/opt/drupal/web/modules
+      - ./web/profiles:/opt/drupal/web/profiles
+      - ./web/sites:/opt/drupal/web/sites
+      - ./web/sites:/opt/drupal/web/themes
+
+networks:
+  drupalnetwork:
+    driver: bridge
+
+volumes:
+  db-data:
