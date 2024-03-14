@@ -1,0 +1,5 @@
+imgw-styling:
+  version: 1.0
+  css:
+    layout:
+      assets/css/imgw-styles.css: {}

@@ -1,0 +1,23 @@
+imgw.admin_settings:
+  path: /admin/config/content/imgw
+  defaults:
+    _form: \Drupal\imgw\Form\IMGWSettingsForm
+    _title: IMGW API Settings
+  requirements:
+    _permission: administer imgwlist
+
+imgw.list_meteorogical:
+  path: '/imgw/meteorogical'
+  defaults:
+    _controller: '\Drupal\imgw\Controller\IMGWController::listMeteorogical'
+    _title: 'Meteorogical data'
+  requirements:
+    _permission: 'access content'
+
+imgw.list_hydrological:
+  path: '/imgw/hydrological'
+  defaults:
+    _controller: '\Drupal\imgw\Controller\IMGWController::listHydrological'
+    _title: 'Hydrological data'
+  requirements:
+    _permission: 'access content'

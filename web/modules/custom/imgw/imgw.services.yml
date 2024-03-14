@@ -1,0 +1,12 @@
+services:
+  imgw.api_connector:
+    class: Drupal\imgw\IMGWApiConnector
+    arguments: ['@http_client', '@logger.factory']
+
+  imgw.data_formatter:
+    class: Drupal\imgw\IMGWDataFormatter
+    arguments: ['@imgw.api_connector', '@config.factory', '@string_translation', '@pager.manager']
+
+  imgw.logger:
+    class: Drupal\Core\Logger\LoggerChannelFactoryInterface
+    arguments: ['imgw']

@@ -1,0 +1,6 @@
+name: IMGW
+type: module
+core_version_requirement: ^10
+description: Utilizes IMGW Api to display weather information
+package: IMGW Api
+

@@ -1,0 +1,4 @@
+administer imgw:
+  title: 'Adminster IMGW Settings'
+  description: 'Access the IMGW administrative settings page.'
+  restrict access: true
