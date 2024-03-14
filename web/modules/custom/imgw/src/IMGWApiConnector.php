@@ -60,8 +60,7 @@ class IMGWApiConnector {
    * @throws \Exception|\GuzzleHttp\Exception\GuzzleException
    *   If there's a problem and data cannot be fetched.
    */
-  public function fetchDataFromAPI(string $uri): array
-  {
+  public function fetchDataFromAPI(string $uri): array {
     try {
       $request = $this->httpClient->request('GET', $uri);
       $result = $request->getBody()->getContents();

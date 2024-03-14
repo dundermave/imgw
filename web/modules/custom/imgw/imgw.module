@@ -9,8 +9,7 @@
 /**
  * Implements hook_theme().
  */
-function imgw_theme($existing, $type, $theme, $path)
-{
+function imgw_theme($existing, $type, $theme, $path) {
   return [
     'imgw-table' => [
       'variables' => ['content' => null]

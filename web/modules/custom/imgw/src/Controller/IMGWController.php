@@ -49,8 +49,7 @@ class IMGWController extends ControllerBase {
    * @return array
    *   Returns array that will display view.
    */
-  public function listMeteorogical(): array
-  {
+  public function listMeteorogical(): array {
     $build = [];
     $build['#cache']['max-age'] = 0;
 

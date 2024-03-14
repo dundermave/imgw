@@ -72,16 +72,14 @@ class IMGWSettingsForm extends ConfigFormBase {
   /**
    * @inheritDoc
    */
-  public function getFormId(): string
-  {
+  public function getFormId(): string {
     return 'imgw_admin_settings';
   }
 
   /**
    * @inheritDoc
    */
-  protected function getEditableConfigNames(): array
-  {
+  protected function getEditableConfigNames(): array {
     return [
       'imgw.api_settings',
     ];

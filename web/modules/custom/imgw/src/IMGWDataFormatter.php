@@ -73,8 +73,7 @@ class IMGWDataFormatter {
    * @return array
    *   Returns rows are in the fields list.
    */
-  protected function getRowsFromData($dataFromApi, $fieldMapping): array
-  {
+  protected function getRowsFromData($dataFromApi, $fieldMapping): array {
     $fields = array_column($fieldMapping, 'field');
 
     $rows = [];
@@ -111,8 +110,7 @@ class IMGWDataFormatter {
    * @return array
    *   Returns the array of headers for table
    */
-  protected function getHeadersFromData($fieldMapping): array
-  {
+  protected function getHeadersFromData($fieldMapping): array {
     return array_combine(
       array_map(fn($map) => $map['headerKey'], $fieldMapping),
       array_map(fn($map) => $map['headerText'], $fieldMapping)
@@ -127,8 +125,7 @@ class IMGWDataFormatter {
    * @return array
    *   Data from Meteorogical API endpoint
    */
-  public function getMeteorogicalDataTable(): array
-  {
+  public function getMeteorogicalDataTable(): array {
     $uri = $this->config->get('api_url_meteorogical');
 
     if (is_null($uri)) {
@@ -192,8 +189,7 @@ class IMGWDataFormatter {
    *
    * @return array
    */
-  public function getHydrologicalDataTable(): array
-  {
+  public function getHydrologicalDataTable(): array {
     $uri = $this->config->get('api_url_hydrological');
 
     if (is_null($uri)) {
@@ -256,8 +252,7 @@ class IMGWDataFormatter {
    * @return array
    *   Sliced content that matches pagination page
    */
-  public function paginateData($rows, $limit): array
-  {
+  public function paginateData($rows, $limit): array {
     $countRows = count($rows);
 
     $pager = $this->pagerManager->createPager($countRows, $limit);
