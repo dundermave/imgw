@@ -2,6 +2,10 @@
 
 ---
 
+This project is built on Drupal CMS version 10 to demonstrate the integration of an external API. It showcases the retrieval and display of hydrological and meteorological data. Additionally, Docker is employed for streamlined deployment.
+
+
+
 **Quick Start**
 
 1. **Clone the Repository**:
