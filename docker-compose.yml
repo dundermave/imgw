@@ -40,7 +40,7 @@ services:
       - ./web/modules:/opt/drupal/web/modules
       - ./web/profiles:/opt/drupal/web/profiles
       - ./web/sites:/opt/drupal/web/sites
-      - ./web/sites:/opt/drupal/web/themes
+      - ./web/themes:/opt/drupal/web/themes
 
 networks:
   drupalnetwork:
